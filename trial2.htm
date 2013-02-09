@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <style>
+      body{
+        margin:20px;
+        background-color:#9C9898;
+      }
+      #myCanvas {
+        border: 1px solid #9C9898;
+	background-color:#ffffff;
+      }
+    </style>
+    <script>
+	var x=0;
+	var y=450;
+	var dx=5;
+	var dy=5;
+	function iP()
+	{
+		var canvas = document.getElementById('myCanvas');
+		var context=canvas.getContext('2d');	
+		var spider=new Image();
+		spider.onload=function()
+		{
+			context.drawImage(spider,x,y,150,150);
+		};
+		spider.src="/home/divya/spider2.jpeg";
+		dx=dx;
+		dy=dy;
+		x+dx;
+		y+dy;
+	}
+	
+      window.onload = function() {
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d'); 
+	setInterval(iP,10);
+      };
+    </script>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="400" height="600"></canvas>
+  </body>
+</html>

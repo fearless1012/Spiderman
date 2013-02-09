@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <style>
+      body{
+        margin:20px;
+        background-color:#9C9898;
+      }
+      #myCanvas {
+        border: 1px solid #9C9898;
+	background-color:#ffffff;
+      }
+    </style>
+    <script>
+      function writeMessage(canvas, message) {
+        var context = canvas.getContext('2d');
+        context.clearRect(0, 0, canvas.width, 50);
+        context.font = '18pt Calibri';
+        context.fillStyle = 'black';
+	
+        context.fillText(message, 10, 25);
+      }
+      function getMousePos(canvas, evt) {
+        var rect = canvas.getBoundingClientRect(), root =document.documentElement;
+
+        // return relative mouse position
+        var mouseX = evt.clientX - rect.left - root.scrollTop;
+        var mouseY = evt.clientY - rect.left - root.scrollLeft;
+        return {
+          x: mouseX,
+          y: mouseY
+        };
+      }
+
+      window.onload = function() {
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+
+        canvas.addEventListener('mousemove', function(evt) {
+          var mousePos = getMousePos(canvas, evt);
+          var message ="ABC";
+	if(mousePos.x>0&&mousePos.x<50&&mousePos.y>450&&mousePos.y<500)
+          writeMessage(canvas, message);
+        }, false);
+	var spider=new Image();
+	spider.onload=function(){
+	context.drawImage(spider,0,450,150,150);
+	
+	};
+	spider.src="/home/divya/spider2.jpeg";
+      };
+//$('#foo').delay(1000)
+	
+
+    </script>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="400" height="600"></canvas>
+  </body>
+</html>
